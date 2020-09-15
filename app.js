@@ -23,6 +23,16 @@ function updateRoundScore(diceNumber) {
   }
 }
 
+function changeActivePlayer() {
+  document
+    .querySelector('.player-' + activePlayer + '-panel')
+    .classList.remove('active');
+  activePlayer = activePlayer === 0 ? 1 : 0;
+  document
+    .querySelector('.player-' + activePlayer + '-panel')
+    .classList.add('active');
+}
+
 document.querySelector('.dice').style.display = 'none'; // hice dice
 
 document.querySelector('.btn-roll').addEventListener('click', () => {
@@ -34,6 +44,6 @@ document.querySelector('.btn-roll').addEventListener('click', () => {
     updateRoundScore(diceNumber);
   } else {
     updateRoundScore(0);
-    activePlayer = activePlayer === 0 ? 1 : 0;
+    changeActivePlayer();
   }
 });
